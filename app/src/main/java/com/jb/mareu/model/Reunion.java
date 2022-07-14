@@ -1,26 +1,27 @@
 package com.jb.mareu.model;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Reunion {
-    private Heure mHeureReunion;
+    private LocalDateTime mHeureEtDateReunion;
     private String mLieuReunion;
     private String mSujetReunion;
     private List<String> mListeParticipants;
 
-    public Reunion(Heure heureReunion, String lieuReunion, String sujetReunion, List<String> listeParticipants) {
-        mHeureReunion = heureReunion;
+    public Reunion(LocalDateTime heureEtDateReunion, String lieuReunion, String sujetReunion, List<String> listeParticipants) {
+        mHeureEtDateReunion = heureEtDateReunion;
         mLieuReunion = lieuReunion;
         mSujetReunion = sujetReunion;
         mListeParticipants = listeParticipants;
     }
 
-    public Heure getHeureReunion() {
-        return mHeureReunion;
+    public LocalDateTime getHeureEtDateReunion() {
+        return mHeureEtDateReunion;
     }
 
-    public void setHeureReunion(Heure heureReunion) {
-        mHeureReunion = heureReunion;
+    public void setHeureEtDateReunion(LocalDateTime heureEtDateReunion) {
+        mHeureEtDateReunion = heureEtDateReunion;
     }
 
     public String getLieuReunion() {
