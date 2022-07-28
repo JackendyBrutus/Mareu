@@ -1,27 +1,39 @@
 package com.jb.mareu.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Objects;
 
 public class Reunion {
-    private LocalDateTime mHeureEtDateReunion;
+    private LocalTime mHeureReunion;
+    private LocalDate mDateReunion;
     private String mLieuReunion;
     private String mSujetReunion;
     private List<String> mListeParticipants;
 
-    public Reunion(LocalDateTime heureEtDateReunion, String lieuReunion, String sujetReunion, List<String> listeParticipants) {
-        mHeureEtDateReunion = heureEtDateReunion;
+    public Reunion(LocalTime heureReunion, LocalDate dateReunion, String lieuReunion, String sujetReunion, List<String> listeParticipants) {
+        mHeureReunion = heureReunion;
+        mDateReunion = dateReunion;
         mLieuReunion = lieuReunion;
         mSujetReunion = sujetReunion;
         mListeParticipants = listeParticipants;
     }
 
-    public LocalDateTime getHeureEtDateReunion() {
-        return mHeureEtDateReunion;
+    public LocalTime getHeureReunion() {
+        return mHeureReunion;
     }
 
-    public void setHeureEtDateReunion(LocalDateTime heureEtDateReunion) {
-        mHeureEtDateReunion = heureEtDateReunion;
+    public void setHeureReunion(LocalTime heureReunion) {
+        mHeureReunion = heureReunion;
+    }
+
+    public LocalDate getDateReunion() {
+        return mDateReunion;
+    }
+
+    public void setDateReunion(LocalDate dateReunion) {
+        mDateReunion = dateReunion;
     }
 
     public String getLieuReunion() {
@@ -46,5 +58,18 @@ public class Reunion {
 
     public void setListeParticipants(List<String> listeParticipants) {
         mListeParticipants = listeParticipants;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reunion reunion = (Reunion) o;
+        return mHeureReunion.equals(reunion.mHeureReunion) && mDateReunion.equals(reunion.mDateReunion) && mLieuReunion.equals(reunion.mLieuReunion);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mHeureReunion, mDateReunion, mLieuReunion);
     }
 }
