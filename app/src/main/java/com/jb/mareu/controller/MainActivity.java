@@ -8,9 +8,11 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jb.mareu.R;
+import com.jb.mareu.service.ReunionService;
 
 public class MainActivity extends AppCompatActivity {
 
+    ReunionService reunionService;
     FloatingActionButton addButton;
 
     @Override
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        reunionService = new ReunionService();
         addButton = (FloatingActionButton) findViewById(R.id.floatingActionButton_addMeeting);
 
         addButton.setOnClickListener(new View.OnClickListener() {

@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Maréu</string>
+    <string name="form_title">Réunion</string>
+    <string name="tv_pageTitle">Ajouter une nouvelle réunion</string>
+    <string name="edt_hint_meetingSubject">Sujet de la réunion</string>
+    <string name="tv_meetingDate">Date :</string>
+    <string name="edt_hint_meetingDate">jour / mois / année</string>
+    <string name="tv_meetingHour">Heure :</string>
+    <string name="edt_hint_meetingHour">hh : mm</string>
+    <string name="tv_meetingPlace">Lieu :</string>
+    <string-array name="spinner_meetingPlace">
+        <item>Choisir salle</item>
+        <item>Salle 1</item>
+        <item>Salle 2</item>
+        <item>Salle 3</item>
+        <item>Salle 4</item>
+        <item>Salle 5</item>
+        <item>Salle 6</item>
+        <item>Salle 7</item>
+        <item>Salle 8</item>
+        <item>Salle 9</item>
+        <item>Salle 10</item>
+    </string-array>
+    <string name="edt_hint_meetingParticipants">Liste des participants</string>
+    <string name="btn_validate">Valider</string>
 </resources>

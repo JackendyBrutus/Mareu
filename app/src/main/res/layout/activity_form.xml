@@ -10,37 +10,115 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:text="@string/tv_pageTitle"
         android:layout_margin="16dp"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:text="Réunion" />
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <EditText
+        android:id="@+id/activity_formEditTextMeetingSubject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:hint="Sujet de la réunion" />
+        android:hint="@string/edt_hint_meetingSubject" />
+
+    <!-- DATE DE LA REUNION -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_meetingDate"
+            android:textSize="20dp"
+            android:layout_marginRight="4dp"/>
+
+        <EditText
+            android:id="@+id/activity_formEditTextDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/edt_hint_meetingDate"
+            android:inputType="date"/>
+
+        <TextView
+            android:id="@+id/activity_formTextViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp" />
+
+    </LinearLayout>
+
+    <!-- HEURE DE LA REUNION -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_meetingHour"
+            android:textSize="20dp"
+            android:layout_marginRight="4dp"/>
+
+        <EditText
+            android:id="@+id/activity_formEditTextTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/edt_hint_meetingHour"
+            android:inputType="time" />
+
+        <TextView
+            android:id="@+id/activity_formTextViewTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp" />
+
+    </LinearLayout>
+
+    <!-- LIEU DE LA REUNION -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_meetingPlace"
+            android:textSize="20dp"
+            android:layout_marginRight="4dp"/>
+
+        <Spinner
+            android:id="@+id/activity_formSpinnerPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <EditText
+        android:id="@+id/activity_formEditTextParticipantList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:hint="@string/edt_hint_meetingParticipants"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="200"
+        android:maxLines="4"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="top"
-        android:hint="Liste des participants" />
+        android:layout_marginBottom="16dp"/>
 
     <Button
+        android:id="@+id/activity_formButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="16dp"
-        android:text="Valider" />
+        android:text="@string/btn_validate" />
 
 </LinearLayout>

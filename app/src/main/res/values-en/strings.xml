@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Maréu</string>
+    <string name="form_title">Meeting</string>
+    <string name="tv_pageTitle">Add a new meeting</string>
+    <string name="edt_hint_meetingSubject">Meeting subject</string>
+    <string name="tv_meetingDate">Date :</string>
+    <string name="edt_hint_meetingDate">day / month / year</string>
+    <string name="tv_meetingHour">Time :</string>
+    <string name="edt_hint_meetingHour">hh : mm</string>
+    <string name="tv_meetingPlace">Place :</string>
+    <string-array name="spinner_meetingPlace">
+        <item>Choose room</item>
+        <item>Room 1</item>
+        <item>Room 2</item>
+        <item>Room 3</item>
+        <item>Room 4</item>
+        <item>Room 5</item>
+        <item>Room 6</item>
+        <item>Room 7</item>
+        <item>Room 8</item>
+        <item>Room 9</item>
+        <item>Room 10</item>
+    </string-array>
+    <string name="edt_hint_meetingParticipants">Participant\'s list</string>
+    <string name="btn_validate">Validate</string>
+</resources>
