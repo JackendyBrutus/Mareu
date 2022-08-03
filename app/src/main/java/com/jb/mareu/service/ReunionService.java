@@ -66,4 +66,11 @@ public class ReunionService {
 
         return listeFiltree;
     }
+
+    @Override
+    public String toString() {
+        return "ReunionService{" +
+                "mListeDeRencontre=" + mListeDeRencontre +
+                '}';
+    }
 }

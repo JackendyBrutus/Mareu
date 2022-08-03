@@ -1,11 +1,12 @@
 package com.jb.mareu.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
 
-public class Reunion {
+public class Reunion implements Serializable {
     private LocalTime mHeureReunion;
     private LocalDate mDateReunion;
     private String mLieuReunion;
@@ -71,5 +72,16 @@ public class Reunion {
     @Override
     public int hashCode() {
         return Objects.hash(mHeureReunion, mDateReunion, mLieuReunion);
+    }
+
+    @Override
+    public String toString() {
+        return "Reunion{" +
+                "mHeureReunion=" + mHeureReunion +
+                ", mDateReunion=" + mDateReunion +
+                ", mLieuReunion='" + mLieuReunion + '\'' +
+                ", mSujetReunion='" + mSujetReunion + '\'' +
+                ", mListeParticipants=" + mListeParticipants +
+                '}';
     }
 }
