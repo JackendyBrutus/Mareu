@@ -3,7 +3,9 @@ package com.jb.mareu.controller;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -204,7 +206,9 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     //RENVOIE LA REUNION A LA MAIN ACTIVITY
-                                    //TO DO
+                                    Intent intent = new Intent();
+                                    intent.putExtra("reunion", mUneReunion);
+                                    setResult(Activity.RESULT_OK, intent);
 
                                     //FERME L'ACTIVITÉ
                                     finish();
