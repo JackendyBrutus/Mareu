@@ -13,16 +13,16 @@
     <string name="tv_meetingPlace">Place :</string>
     <string-array name="spinner_meetingPlace">
         <item>Choose room</item>
-        <item>Room 1</item>
-        <item>Room 2</item>
-        <item>Room 3</item>
-        <item>Room 4</item>
-        <item>Room 5</item>
-        <item>Room 6</item>
-        <item>Room 7</item>
-        <item>Room 8</item>
-        <item>Room 9</item>
-        <item>Room 10</item>
+        <item>Room A</item>
+        <item>Room B</item>
+        <item>Room C</item>
+        <item>Room D</item>
+        <item>Room E</item>
+        <item>Room F</item>
+        <item>Room G</item>
+        <item>Room H</item>
+        <item>Room I</item>
+        <item>Room J</item>
     </string-array>
     <string name="tv_hint_meetingPlace">This field is mandatory</string>
     <string name="tv_meetingParticipants">Participants :</string>

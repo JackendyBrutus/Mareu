@@ -13,16 +13,16 @@
     <string name="tv_meetingPlace">Lieu :</string>
     <string-array name="spinner_meetingPlace">
         <item>Choisir salle</item>
-        <item>Salle 1</item>
-        <item>Salle 2</item>
-        <item>Salle 3</item>
-        <item>Salle 4</item>
-        <item>Salle 5</item>
-        <item>Salle 6</item>
-        <item>Salle 7</item>
-        <item>Salle 8</item>
-        <item>Salle 9</item>
-        <item>Salle 10</item>
+        <item>Salle A</item>
+        <item>Salle B</item>
+        <item>Salle C</item>
+        <item>Salle D</item>
+        <item>Salle E</item>
+        <item>Salle F</item>
+        <item>Salle G</item>
+        <item>Salle H</item>
+        <item>Salle I</item>
+        <item>Salle J</item>
     </string-array>
     <string name="tv_hint_meetingPlace">Ce champ est obligatoire</string>
     <string name="tv_meetingParticipants">Participants :</string>

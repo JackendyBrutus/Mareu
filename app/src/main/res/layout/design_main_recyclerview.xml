@@ -37,7 +37,7 @@
     <TextView
         android:id="@+id/design_main_recyclerview_email_reunion"
         android:layout_width="256dp"
-        android:layout_height="25dp"
+        android:layout_height="20dp"
         android:text="maxime@lamzone.com, alex@lamzo..."
         android:layout_toRightOf="@+id/design_main_recyclerview_ImageView"
         android:layout_marginTop="40dp"

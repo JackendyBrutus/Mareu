@@ -36,8 +36,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        //TO DO - CONCATENATE MEETING SUBJECT + MEETING HOUR...
-        holder.infoReunion.setText(listeDeRencontre.get(position).getSujetReunion());
+        //FORMATTAGE DES DONNEES
+        String lieu = listeDeRencontre.get(position).getLieuReunion();
+        lieu = (lieu.length() == 6) ? lieu.substring(5) : lieu.substring(6);
+
+        String heure = listeDeRencontre.get(position).getHeureReunion().toString();
+        heure.substring(0, heure.length() - 2);
+        heure = heure.replace(':', 'h');
+
+        String sujet = listeDeRencontre.get(position).getSujetReunion();
+
+        //AFFICHAGE DES DONNEES
+        holder.infoReunion.setText(context.getString(R.string.form_title) + " " + lieu + " - " + heure + " - " + sujet);
         holder.emailReunion.setText(String.valueOf(listeDeRencontre.get(position).getListeParticipants()));
         holder.imageViewColor.setImageResource(R.color.green);
     }

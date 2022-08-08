@@ -39,8 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
         reunionService = new ReunionService();
 
-        //TEST AJOUT D'UN ELEMENT AU PREALABLE
-        // reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle 20", "Peach", Collections.singletonList("jackendy@gmail.com")));
+        // TEST AJOUT D'UN ELEMENT AU PREALABLE
+         reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
+         //
+
 
         addButton = findViewById(R.id.floatingActionButton_addMeeting);
 
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new RecyclerViewAdapter(reunionService.getListeDeRencontre(), MainActivity.this);
+        recyclerView.setAdapter(adapter);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
             Reunion reunion = (Reunion) data.getSerializableExtra("reunion");
             reunionService.ajouterReunion(reunion);
 
-            //Log.i("Reunion dans LR", reunionService.getListeDeRencontre().toString() + "");
+            //MIS A JOUR DE L'AFFICHAGE DE LA MAIN ACTIVITY
+            recyclerView.setAdapter(adapter);
         }
     }
 }
