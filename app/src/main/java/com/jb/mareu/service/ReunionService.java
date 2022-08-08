@@ -3,7 +3,9 @@ package com.jb.mareu.service;
 import com.jb.mareu.model.Reunion;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ReunionService {
@@ -73,4 +75,5 @@ public class ReunionService {
                 "mListeDeRencontre=" + mListeDeRencontre +
                 '}';
     }
+
 }
