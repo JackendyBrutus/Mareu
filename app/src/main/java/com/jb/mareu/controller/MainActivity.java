@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jb.mareu.R;
@@ -19,17 +19,16 @@ import com.jb.mareu.service.ReunionService;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Collections;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ReunionService reunionService;
+    public static ReunionService reunionService;
     FloatingActionButton addButton;
 
     public final static int REQUEST_CODE = 1;
 
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    public static RecyclerView recyclerView;
+    public static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -39,9 +38,21 @@ public class MainActivity extends AppCompatActivity {
 
         reunionService = new ReunionService();
 
-        // TEST AJOUT D'UN ELEMENT AU PREALABLE
-         reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
-         //
+        // TEST AJOUT DE QUELQUES ELEMENTS AU PREALABLE
+        /*
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
+
+         */
+        //
 
 
         addButton = findViewById(R.id.floatingActionButton_addMeeting);
@@ -66,12 +77,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
-            //RÉCUPÈRE LA REUNION DE LA FORM ACTIVITY ET L'AJOUTE A LA LISTE QUE POSSEDE L'INSTANCE REUNIONSERVICE
-            Reunion reunion = (Reunion) data.getSerializableExtra("reunion");
-            reunionService.ajouterReunion(reunion);
+            //RÉCUPÈRE L'ENTIER QUI PERMET DE SAVOIR SI LA REUNION A ETE AJOUTÉE
+            int valeur = data.getIntExtra("ajout", 0);
 
-            //MIS A JOUR DE L'AFFICHAGE DE LA MAIN ACTIVITY
-            recyclerView.setAdapter(adapter);
+            //AFFICHE LE MESSAGE APPROPRIÉ A L'UTILISATEUR
+            if(valeur == 1){
+                Toast.makeText(getApplicationContext(), R.string.add_meeting_success, Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(getApplicationContext(), R.string.add_meeting_failure, Toast.LENGTH_LONG).show();
+            }
         }
     }
+
 }

@@ -205,10 +205,18 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    //RENVOIE LA REUNION A LA MAIN ACTIVITY
+                                    //RENVOIE UNE VALEUR A LA MAINACTIVITY QUI INDIQUE SI LA RÉUNION A BIEN ÉTÉ AJOUTÉE
                                     Intent intent = new Intent();
-                                    intent.putExtra("reunion", mUneReunion);
-                                    setResult(Activity.RESULT_OK, intent);
+                                    if(MainActivity.reunionService.ajouterReunion(mUneReunion)){
+                                        MainActivity.recyclerView.setAdapter(MainActivity.adapter);
+
+                                        intent.putExtra("ajout", 1);
+                                        setResult(Activity.RESULT_OK, intent);
+                                    }
+                                    else{
+                                        intent.putExtra("ajout", 0);
+                                        setResult(Activity.RESULT_OK, intent);
+                                    }
 
                                     //FERME L'ACTIVITÉ
                                     finish();

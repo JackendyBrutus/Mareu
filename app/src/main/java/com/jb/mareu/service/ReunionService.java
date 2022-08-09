@@ -5,7 +5,6 @@ import com.jb.mareu.model.Reunion;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ReunionService {
@@ -20,11 +19,32 @@ public class ReunionService {
     }
 
     /**
-     * Ajoute une reunion dans la liste de rencontre.
+     * Ajoute une reunion dans la liste de rencontre s'il n'y a pas deja une autre reunion de prevue
+     * dans la liste dans la meme salle, a la meme date et a la meme heure.
      * @param reunion La reunion qui sera ajoutee dans la liste de rencontre.
+     * @return Retourne une valeur qui indique si la reunion a ete ajoutee dans la liste de rencontre ou pas.
      */
-    public void ajouterReunion(Reunion reunion){
+    public boolean ajouterReunion(Reunion reunion){
+        String lieuReunionListe;
+        LocalDate dateReunionListe;
+        LocalTime heureReunionListe;
+
+        String lieuNouvelleReunion = reunion.getLieuReunion().substring(reunion.getLieuReunion().length() - 1);
+        LocalDate dateNouvelleReunion = reunion.getDateReunion();
+        LocalTime heureNouvelleReunion = reunion.getHeureReunion();
+
+        for(int i = 0; i < mListeDeRencontre.size(); i++){
+            lieuReunionListe = mListeDeRencontre.get(i).getLieuReunion().substring(mListeDeRencontre.get(i).getLieuReunion().length() - 1);
+            dateReunionListe = mListeDeRencontre.get(i).getDateReunion();
+            heureReunionListe = mListeDeRencontre.get(i).getHeureReunion();
+
+            if(lieuReunionListe.equals(lieuNouvelleReunion) && dateReunionListe.equals(dateNouvelleReunion) && heureReunionListe.equals(heureNouvelleReunion)){
+                return false;
+            }
+        }
+
         mListeDeRencontre.add(reunion);
+        return true;
     }
 
     /**
@@ -37,7 +57,7 @@ public class ReunionService {
 
     /**
      * Filtre des reunions par date
-     * @param DateReunion Date de reunion par lequel filtrer
+     * @param DateReunion Date de reunion par laquelle filtrer
      * @return retourne une nouvelle liste de reunion filtree par date
      */
     public List<Reunion> filtrerReunion(LocalDate DateReunion){

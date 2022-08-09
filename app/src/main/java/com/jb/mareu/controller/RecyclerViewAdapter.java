@@ -1,6 +1,7 @@
 package com.jb.mareu.controller;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jb.mareu.R;
@@ -50,6 +52,33 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.infoReunion.setText(context.getString(R.string.form_title) + " " + lieu + " - " + heure + " - " + sujet);
         holder.emailReunion.setText(String.valueOf(listeDeRencontre.get(position).getListeParticipants()));
         holder.imageViewColor.setImageResource(R.color.green);
+
+        holder.deleteReunion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //OUVRIR BOITE DE DIALOGUE DEMANDANT A L'UTILISATEUR DE CONFIRMER LA SUPPRESSION
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+                builder.setTitle(R.string.delete_meeting_title)
+                        .setMessage(R.string.delete_meeting_message)
+                        .setPositiveButton(R.string.delete_meeting_positive_button, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //SUPPRIMER REUNION
+                                MainActivity.reunionService.supprimerReunion(listeDeRencontre.get(holder.getAdapterPosition()));
+                                MainActivity.recyclerView.setAdapter(MainActivity.adapter);
+                            }
+                        })
+                        .setNegativeButton(R.string.delete_meeting_negative_button, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .create()
+                        .show();
+            }
+        });
     }
 
     @Override

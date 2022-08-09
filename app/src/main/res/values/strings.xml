@@ -29,4 +29,10 @@
     <string name="edt_hint_meetingParticipants">amandine@lamzone.com, luc@lamz...</string>
     <string name="tv_hint_meetingParticipants">Ajouter l\'adresse mail de chaque participants en les séparants par une virgule ou/et une espace. Chaque adresse doit contenir au moins 3 caractères!</string>
     <string name="btn_validate">Valider</string>
+    <string name="add_meeting_success">Nouvelle réunion ajoutée avec succès</string>
+    <string name="add_meeting_failure">Echec d\'ajout de réunion!</string>
+    <string name="delete_meeting_title">Supprimer Réunion !</string>
+    <string name="delete_meeting_message">Voulez-vous vraiment supprimer cette réunion ?</string>
+    <string name="delete_meeting_positive_button">Oui</string>
+    <string name="delete_meeting_negative_button">Non</string>
 </resources>
