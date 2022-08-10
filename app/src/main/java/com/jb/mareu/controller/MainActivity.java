@@ -19,6 +19,7 @@ import com.jb.mareu.service.ReunionService;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Collections;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,16 +41,16 @@ public class MainActivity extends AppCompatActivity {
 
         // TEST AJOUT DE QUELQUES ELEMENTS AU PREALABLE
         /*
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle K", "Anticonstitutionnellement", Collections.singletonList("jackendy@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle L", "Game", Collections.singletonList("brutus@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle M", "Mario", Collections.singletonList("patricia@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle N", "Luigi", Collections.singletonList("frederic@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle O", "Party", Collections.singletonList("josephine@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle P", "Abreviativement", Collections.singletonList("julia@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Q", "Constante", Collections.singletonList("adrienne@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle R", "Constitution", Collections.singletonList("rachelle@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle S", "Constitutionnellement", Collections.singletonList("picasso@gmail.com")));
+        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle T", "Over", Collections.singletonList("alicia@gmail.com")));
          */
 
         //

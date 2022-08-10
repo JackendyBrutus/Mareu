@@ -189,10 +189,9 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
                     mListeParticipantsHint.setText(R.string.tv_hint_meetingParticipants);
                 }
 
-                //INITIALISE LA REUNION AVEC LES VALEURS ENTREES PAR L'UTILISATEUR, AFFICHE UNE BOITE DE DIALOGUE, PUIS RENVOIE LA REUNION A LA MAIN ACTIVITY
+                //INITIALISE LA REUNION AVEC LES VALEURS ENTREES PAR L'UTILISATEUR ET UNE COULEUR ALEATOIRE, AFFICHE UNE BOITE DE DIALOGUE, PUIS RENVOIE LA REUNION A LA MAIN ACTIVITY
                 if(sujetDeReunion != null && dateDeReunion != null && heureDeReunion != null && lieuDeReunion != null && !listeDeParticipants.isEmpty()){
                     mUneReunion = new Reunion(heureDeReunion, dateDeReunion, lieuDeReunion, sujetDeReunion, listeDeParticipants);
-                    mUneReunion.setCouleur(new Random().nextInt(10) % 2 == 0 ? "pearl" : "green");
 
                     //AFFICHE BOITE DE DIALOGUE AVEC LES INFORMATION DE LA REUNION
                     AlertDialog.Builder builder = new AlertDialog.Builder(FormActivity.this);

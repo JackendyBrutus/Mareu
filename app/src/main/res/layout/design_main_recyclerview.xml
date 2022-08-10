@@ -18,12 +18,12 @@
         android:id="@+id/design_main_recyclerview_info_reunion"
         android:layout_width="264dp"
         android:layout_height="25dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/design_main_recyclerview_imageview_color"
         android:text="Réunion A - 14h00 - Peach"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_toRightOf="@+id/design_main_recyclerview_imageview_color"
-        android:layout_marginTop="16dp" />
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/design_main_recyclerview_email_reunion"

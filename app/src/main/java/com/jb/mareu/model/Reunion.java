@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class Reunion {
     private LocalTime mHeureReunion;
@@ -11,8 +12,7 @@ public class Reunion {
     private String mLieuReunion;
     private String mSujetReunion;
     private List<String> mListeParticipants;
-
-    private String couleur;
+    private String mCouleur;
 
     public Reunion(LocalTime heureReunion, LocalDate dateReunion, String lieuReunion, String sujetReunion, List<String> listeParticipants) {
         mHeureReunion = heureReunion;
@@ -20,6 +20,7 @@ public class Reunion {
         mLieuReunion = lieuReunion;
         mSujetReunion = sujetReunion;
         mListeParticipants = listeParticipants;
+        mCouleur = new Random().nextInt(10) % 2 == 0 ? "pearl" : "green";
     }
 
     public LocalTime getHeureReunion() {
@@ -63,11 +64,11 @@ public class Reunion {
     }
 
     public String getCouleur() {
-        return couleur;
+        return mCouleur;
     }
 
     public void setCouleur(String couleur) {
-        this.couleur = couleur;
+        mCouleur = couleur;
     }
 
     @Override

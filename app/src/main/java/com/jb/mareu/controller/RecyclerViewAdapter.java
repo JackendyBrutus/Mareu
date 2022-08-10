@@ -49,9 +49,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         String sujet = listeDeRencontre.get(position).getSujetReunion();
 
+        String emailParticipants = String.valueOf(listeDeRencontre.get(position).getListeParticipants());
+        emailParticipants = emailParticipants.substring(1, emailParticipants.length() - 1);
+
         //AFFICHAGE DES DONNEES
-        holder.infoReunion.setText(context.getString(R.string.form_title) + " " + lieu + " - " + heure + " - " + sujet);
-        holder.emailReunion.setText(String.valueOf(listeDeRencontre.get(position).getListeParticipants()));
+        holder.infoReunion.setText(context.getString(R.string.form_title) + " " + lieu + " - " + heure + " - " + (sujet.length() > 10 ? sujet.substring(0, 7) + "..." : sujet));
+        holder.emailReunion.setText(emailParticipants.length() > 35 ? emailParticipants.substring(0, 35) + "..." : emailParticipants);
         holder.imageViewColor.setImageResource(String.valueOf(listeDeRencontre.get(position).getCouleur()).equals("pearl") ? R.color.pearl : R.color.green);
 
         holder.deleteReunion.setOnClickListener(new View.OnClickListener() {
