@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,6 +25,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class FormActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -190,6 +192,7 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
                 //INITIALISE LA REUNION AVEC LES VALEURS ENTREES PAR L'UTILISATEUR, AFFICHE UNE BOITE DE DIALOGUE, PUIS RENVOIE LA REUNION A LA MAIN ACTIVITY
                 if(sujetDeReunion != null && dateDeReunion != null && heureDeReunion != null && lieuDeReunion != null && !listeDeParticipants.isEmpty()){
                     mUneReunion = new Reunion(heureDeReunion, dateDeReunion, lieuDeReunion, sujetDeReunion, listeDeParticipants);
+                    mUneReunion.setCouleur(new Random().nextInt(10) % 2 == 0 ? "pearl" : "green");
 
                     //AFFICHE BOITE DE DIALOGUE AVEC LES INFORMATION DE LA REUNION
                     AlertDialog.Builder builder = new AlertDialog.Builder(FormActivity.this);

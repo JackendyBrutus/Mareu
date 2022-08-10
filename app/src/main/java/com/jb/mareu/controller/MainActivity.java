@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
         reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
         reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
         reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle Z", "Peach", Collections.singletonList("jackendy@gmail.com")));
-
          */
+
         //
 
 

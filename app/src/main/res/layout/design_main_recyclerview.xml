@@ -6,42 +6,32 @@
     android:layout_height="wrap_content"
     android:id="@+id/oneLineMeetingLayout">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/design_main_recyclerview_ImageView"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/design_main_recyclerview_imageview_color"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        app:cardCornerRadius="45dp"
-        android:layout_margin="16dp">
-
-        <ImageView
-            android:id="@+id/design_main_recyclerview_imageview_color"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:scaleType="centerCrop"
-            android:src="@color/green" />
-
-    </androidx.cardview.widget.CardView>
+        android:scaleType="centerCrop"
+        android:src="@color/green"
+        android:layout_margin="16dp" />
 
     <TextView
         android:id="@+id/design_main_recyclerview_info_reunion"
-        android:layout_width="256dp"
+        android:layout_width="264dp"
         android:layout_height="25dp"
         android:text="Réunion A - 14h00 - Peach"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_toRightOf="@+id/design_main_recyclerview_ImageView"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="8dp" />
+        android:layout_toRightOf="@+id/design_main_recyclerview_imageview_color"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:id="@+id/design_main_recyclerview_email_reunion"
-        android:layout_width="256dp"
+        android:layout_width="264dp"
         android:layout_height="20dp"
         android:text="maxime@lamzone.com, alex@lamzo..."
-        android:layout_toRightOf="@+id/design_main_recyclerview_ImageView"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="8dp" />
+        android:layout_toRightOf="@+id/design_main_recyclerview_imageview_color"
+        android:layout_marginTop="40dp" />
 
     <ImageButton
         android:id="@+id/design_main_recyclerview_delete_reunion"

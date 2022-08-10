@@ -17,6 +17,7 @@ import com.jb.mareu.R;
 import com.jb.mareu.model.Reunion;
 
 import java.util.List;
+import java.util.Random;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
@@ -51,7 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         //AFFICHAGE DES DONNEES
         holder.infoReunion.setText(context.getString(R.string.form_title) + " " + lieu + " - " + heure + " - " + sujet);
         holder.emailReunion.setText(String.valueOf(listeDeRencontre.get(position).getListeParticipants()));
-        holder.imageViewColor.setImageResource(R.color.green);
+        holder.imageViewColor.setImageResource(String.valueOf(listeDeRencontre.get(position).getCouleur()).equals("pearl") ? R.color.pearl : R.color.green);
 
         holder.deleteReunion.setOnClickListener(new View.OnClickListener() {
             @Override

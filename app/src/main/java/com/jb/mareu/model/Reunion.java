@@ -12,6 +12,8 @@ public class Reunion {
     private String mSujetReunion;
     private List<String> mListeParticipants;
 
+    private String couleur;
+
     public Reunion(LocalTime heureReunion, LocalDate dateReunion, String lieuReunion, String sujetReunion, List<String> listeParticipants) {
         mHeureReunion = heureReunion;
         mDateReunion = dateReunion;
@@ -58,6 +60,14 @@ public class Reunion {
 
     public void setListeParticipants(List<String> listeParticipants) {
         mListeParticipants = listeParticipants;
+    }
+
+    public String getCouleur() {
+        return couleur;
+    }
+
+    public void setCouleur(String couleur) {
+        this.couleur = couleur;
     }
 
     @Override
