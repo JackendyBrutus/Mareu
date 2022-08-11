@@ -2,11 +2,13 @@ package com.jb.mareu.controller;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -83,6 +85,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         .show();
             }
         });
+
+        //MODIFICATION D'UNE REUNION
+        holder.meetingLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //OUVRIR LA FORM_ACTIVITY EN LUI PASSANT UNE VALEUR QUI INDIQUE Q'ON VEUT MODIFIER LA REUNION
+                Intent intent = new Intent(context, FormActivity.class);
+                intent.putExtra("position", listeDeRencontre.indexOf(listeDeRencontre.get(holder.getPosition())));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -95,6 +108,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView infoReunion;
         TextView emailReunion;
         ImageButton deleteReunion;
+        RelativeLayout meetingLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -102,6 +116,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             infoReunion = itemView.findViewById(R.id.design_main_recyclerview_info_reunion);
             emailReunion = itemView.findViewById(R.id.design_main_recyclerview_email_reunion);
             deleteReunion = itemView.findViewById(R.id.design_main_recyclerview_delete_reunion);
+            meetingLayout = itemView.findViewById(R.id.oneLineMeetingLayout);
         }
     }
 }

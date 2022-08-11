@@ -35,4 +35,5 @@
     <string name="delete_meeting_message">Voulez-vous vraiment supprimer cette réunion ?</string>
     <string name="delete_meeting_positive_button">Oui</string>
     <string name="delete_meeting_negative_button">Non</string>
+    <string name="tv_edit_meeting_title">Modifier la réunion</string>
 </resources>

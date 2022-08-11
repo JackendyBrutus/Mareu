@@ -18,6 +18,7 @@
             android:orientation="vertical" >
 
             <TextView
+                android:id="@+id/activity_formTextViewPageTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tv_pageTitle"

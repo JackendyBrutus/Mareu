@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,7 +24,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class FormActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -54,6 +52,9 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
     String lieuDeReunion;
     List<String> listeDeParticipants;
 
+    int positionReunionAModifier;
+    TextView mPageTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,12 +79,32 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
 
         mBouton = findViewById(R.id.activity_formButton);
 
+        mPageTitle = findViewById(R.id.activity_formTextViewPageTitle);
+
         //AJOUT DE TEXTE DANS SPINNER
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinner_meetingPlace, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinnerLieuReunion.setAdapter(adapter);
 
         mSpinnerLieuReunion.setOnItemSelectedListener(this);
+
+
+        Intent intent = getIntent();
+        positionReunionAModifier = intent.getIntExtra("position", -1);
+
+        if(positionReunionAModifier >= 0){
+            //AJOUT DES DONNÉES RELATIVES A LA RÉUNION DANS LES DIFFERENTS COMPOSANTS
+            mUneReunion = MainActivity.reunionService.getListeDeRencontre().get(positionReunionAModifier);
+            //mUneReunion.setCouleur(MainActivity.reunionService.getListeDeRencontre().get(positionReunionAModifier).getCouleur());
+            mPageTitle.setText(R.string.tv_edit_meeting_title);
+
+            mSujetReunion.setText(mUneReunion.getSujetReunion());
+            mDateReunion.setText(mUneReunion.getDateReunion().format(DateTimeFormatter.ofPattern("d/MM/yyyy")));
+            mHeureReunion.setText(mUneReunion.getHeureReunion().toString());
+            mSpinnerLieuReunion.setSelection(((ArrayAdapter<String>)mSpinnerLieuReunion.getAdapter()).getPosition(mUneReunion.getLieuReunion()));
+            mListeParticipants.setText((mUneReunion.getListeParticipants().toString()).substring(1, mUneReunion.getListeParticipants().toString().length() - 1));
+        }
+
 
         mBouton.setOnClickListener(new View.OnClickListener() {
             //COLLECTE LES DONNEES DES DIFFERENTS COMPOSANTS ET CREE UNE REUNION, PUIS RENVOIS LA REUNION A LA MAIN ACTIVITY
@@ -199,7 +220,7 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
                     builder.setTitle(R.string.form_title)
                             .setMessage(FormActivity.this.getString(
                                     R.string.edt_hint_meetingSubject) + " : " + mUneReunion.getSujetReunion() + "\n" +
-                                    FormActivity.this.getString(R.string.tv_meetingDate) + " " + mUneReunion.getDateReunion() + "\n" +
+                                    FormActivity.this.getString(R.string.tv_meetingDate) + " " + mUneReunion.getDateReunion().format(DateTimeFormatter.ofPattern("d/MM/yyyy")) + "\n" +
                                     FormActivity.this.getString(R.string.tv_meetingHour) + " " + mUneReunion.getHeureReunion() + "\n" +
                                     FormActivity.this.getString(R.string.tv_meetingPlace) + " " + mUneReunion.getLieuReunion() + "\n" +
                                     FormActivity.this.getString(R.string.tv_meetingParticipants) + " " + mUneReunion.getListeParticipants().size()
@@ -207,17 +228,25 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    //RENVOIE UNE VALEUR A LA MAINACTIVITY QUI INDIQUE SI LA RÉUNION A BIEN ÉTÉ AJOUTÉE
+                                    //RENVOIE UNE VALEUR A LA MAINACTIVITY QUI INDIQUE SI LA RÉUNION A ÉTÉ AJOUTÉE
                                     Intent intent = new Intent();
-                                    if(MainActivity.reunionService.ajouterReunion(mUneReunion)){
+                                    if(positionReunionAModifier >= 0){
+                                        //MODIFIER UNE REUNION EXISTANTE
+                                        MainActivity.reunionService.getListeDeRencontre().set(positionReunionAModifier, mUneReunion);
                                         MainActivity.recyclerView.setAdapter(MainActivity.adapter);
-
-                                        intent.putExtra("ajout", 1);
-                                        setResult(Activity.RESULT_OK, intent);
                                     }
                                     else{
-                                        intent.putExtra("ajout", 0);
-                                        setResult(Activity.RESULT_OK, intent);
+                                        //AJOUTER UNE NOUVELLE REUNION
+                                        if(MainActivity.reunionService.ajouterReunion(mUneReunion)){
+                                            MainActivity.recyclerView.setAdapter(MainActivity.adapter);
+
+                                            intent.putExtra("ajout", 1);
+                                            setResult(Activity.RESULT_OK, intent);
+                                        }
+                                        else{
+                                            intent.putExtra("ajout", 0);
+                                            setResult(Activity.RESULT_OK, intent);
+                                        }
                                     }
 
                                     //FERME L'ACTIVITÉ
