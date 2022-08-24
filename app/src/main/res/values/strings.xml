@@ -36,4 +36,7 @@
     <string name="delete_meeting_positive_button">Oui</string>
     <string name="delete_meeting_negative_button">Non</string>
     <string name="tv_edit_meeting_title">Modifier la réunion</string>
+    <string name="menu">Filtrage</string>
+    <string name="menu_date_filtering">Filtrer par date</string>
+    <string name="menu_place_filtering">Filtrer par lieu</string>
 </resources>

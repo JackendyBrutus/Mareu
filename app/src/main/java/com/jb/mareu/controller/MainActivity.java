@@ -1,5 +1,6 @@
 package com.jb.mareu.controller;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -32,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     public static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
+    private Menu menu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle R", "Constitution", Collections.singletonList("rachelle@gmail.com")));
         reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle S", "Constitutionnellement", Collections.singletonList("picasso@gmail.com")));
         reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Salle T", "Over", Collections.singletonList("alicia@gmail.com")));
-         */
+*/
 
         //
 
@@ -89,6 +95,26 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), R.string.add_meeting_failure, Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.filtering_menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.menu_date_filtering){
+            //FILTRER PAR DATE
+        }
+        else{
+            //FILTRER PAR NOM
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

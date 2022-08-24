@@ -119,4 +119,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             meetingLayout = itemView.findViewById(R.id.oneLineMeetingLayout);
         }
     }
+
 }
