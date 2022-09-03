@@ -9,6 +9,7 @@ import com.jb.mareu.service.ReunionService;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -110,7 +111,7 @@ public class ReunionServiceUnitTest {
                 ));
 
         // Filtrer les réunions précédemment ajoutées par date
-        List<Reunion> listeFiltree = reunionService.filtrerReunion(LocalDate.parse("2022-07-30"));
+        List<Reunion> listeFiltree = reunionService.filtrerReunion(DateTimeFormatter.ofPattern("dd/MM/YYYY").format(LocalDate.parse("2022-07-30")));
 
         /* Verifier que la liste filtree ne contient que 2 elements et que ces 2 elements correspondent
          aux 2 elements de la liste de rencontre de l'instance de la classe reunionService dont leurs dates

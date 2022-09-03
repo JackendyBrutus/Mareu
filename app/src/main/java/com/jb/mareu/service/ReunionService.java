@@ -4,6 +4,7 @@ import com.jb.mareu.model.Reunion;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,33 +57,16 @@ public class ReunionService {
     }
 
     /**
-     * Filtre des reunions par date
-     * @param DateReunion Date de reunion par laquelle filtrer
-     * @return retourne une nouvelle liste de reunion filtree par date
+     * Filtre des reunions par date ou par lieu
+     * @param pattern la chaine par laquelle filtrer
+     * @return retourne une nouvelle liste de reunion filtree soit par date, soit par lieu
      */
-    public List<Reunion> filtrerReunion(LocalDate DateReunion){
+    public List<Reunion> filtrerReunion(String pattern){
         List<Reunion> listeFiltree = new ArrayList<>();
 
-        for(int i = 0; i < mListeDeRencontre.size(); i++){
-            if(mListeDeRencontre.get(i).getDateReunion().equals(DateReunion)){
-                listeFiltree.add(mListeDeRencontre.get(i));
-            }
-        }
-
-        return listeFiltree;
-    }
-
-    /**
-     * Filtre des reunions par lieu
-     * @param lieuReunion lieu de reunion par lequel filtrer
-     * @return retourne une nouvelle liste de reunion filtree par lieu
-     */
-    public List<Reunion> filtrerReunion(String lieuReunion){
-        List<Reunion> listeFiltree = new ArrayList<>();
-
-        for(int i = 0; i < mListeDeRencontre.size(); i++){
-            if(mListeDeRencontre.get(i).getLieuReunion().equals(lieuReunion)){
-                listeFiltree.add(mListeDeRencontre.get(i));
+        for(Reunion reunion : mListeDeRencontre){
+            if(DateTimeFormatter.ofPattern("dd/MM/YYYY").format(reunion.getDateReunion()).toString().contains(pattern) || reunion.getLieuReunion().toLowerCase().contains(pattern.toLowerCase())){
+                listeFiltree.add(reunion);
             }
         }
 

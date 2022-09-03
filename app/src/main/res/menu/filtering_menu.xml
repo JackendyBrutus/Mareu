@@ -3,21 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/filtering_menu"
         android:title="@string/menu"
         app:showAsAction="always"
         android:icon="@drawable/menu_icon"
         app:iconTint="@color/white"
-        android:iconTint="@color/white">
+        android:iconTint="@color/white"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 
-        <menu>
-            <item
-                android:id="@+id/menu_date_filtering"
-                android:title="@string/menu_date_filtering" />
-
-            <item
-                android:id="@+id/menu_place_filtering"
-                android:title="@string/menu_place_filtering" />
-        </menu>
-
-    </item>
 </menu>

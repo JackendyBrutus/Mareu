@@ -92,20 +92,22 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent intent = getIntent();
         positionReunionAModifier = intent.getIntExtra("position", -1);
 
+        String couleurReunionAModifier = "green";
         if(positionReunionAModifier >= 0){
             //AJOUT DES DONNÉES RELATIVES A LA RÉUNION DANS LES DIFFERENTS COMPOSANTS
             mUneReunion = MainActivity.reunionService.getListeDeRencontre().get(positionReunionAModifier);
-            //mUneReunion.setCouleur(MainActivity.reunionService.getListeDeRencontre().get(positionReunionAModifier).getCouleur());
+            couleurReunionAModifier = MainActivity.reunionService.getListeDeRencontre().get(positionReunionAModifier).getCouleur();
             mPageTitle.setText(R.string.tv_edit_meeting_title);
 
             mSujetReunion.setText(mUneReunion.getSujetReunion());
             mDateReunion.setText(mUneReunion.getDateReunion().format(DateTimeFormatter.ofPattern("d/MM/yyyy")));
             mHeureReunion.setText(mUneReunion.getHeureReunion().toString());
-            mSpinnerLieuReunion.setSelection(((ArrayAdapter<String>)mSpinnerLieuReunion.getAdapter()).getPosition(mUneReunion.getLieuReunion()));
+            mSpinnerLieuReunion.setSelection(((ArrayAdapter<String>)mSpinnerLieuReunion.getAdapter()).getPosition(getString(R.string.spinner_place) + " " + mUneReunion.getLieuReunion()));
             mListeParticipants.setText((mUneReunion.getListeParticipants().toString()).substring(1, mUneReunion.getListeParticipants().toString().length() - 1));
         }
 
 
+        String finalCouleurReunionAModifier = couleurReunionAModifier;
         mBouton.setOnClickListener(new View.OnClickListener() {
             //COLLECTE LES DONNEES DES DIFFERENTS COMPOSANTS ET CREE UNE REUNION, PUIS RENVOIS LA REUNION A LA MAIN ACTIVITY
             @Override
@@ -222,7 +224,7 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
                                     R.string.edt_hint_meetingSubject) + " : " + mUneReunion.getSujetReunion() + "\n" +
                                     FormActivity.this.getString(R.string.tv_meetingDate) + " " + mUneReunion.getDateReunion().format(DateTimeFormatter.ofPattern("d/MM/yyyy")) + "\n" +
                                     FormActivity.this.getString(R.string.tv_meetingHour) + " " + mUneReunion.getHeureReunion() + "\n" +
-                                    FormActivity.this.getString(R.string.tv_meetingPlace) + " " + mUneReunion.getLieuReunion() + "\n" +
+                                    FormActivity.this.getString(R.string.tv_meetingPlace) + " " + getString(R.string.spinner_place) + " " + mUneReunion.getLieuReunion() + "\n" +
                                     FormActivity.this.getString(R.string.tv_meetingParticipants) + " " + mUneReunion.getListeParticipants().size()
                             )
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -232,7 +234,10 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
                                     Intent intent = new Intent();
                                     if(positionReunionAModifier >= 0){
                                         //MODIFIER UNE REUNION EXISTANTE
+                                        mUneReunion.setCouleur(finalCouleurReunionAModifier);
                                         MainActivity.reunionService.getListeDeRencontre().set(positionReunionAModifier, mUneReunion);
+                                        //REINITIALISE L'ADAPTER
+                                        MainActivity.adapter = new RecyclerViewAdapter(MainActivity.reunionService.getListeDeRencontre(), MainActivity.adapter.context);
                                         MainActivity.recyclerView.setAdapter(MainActivity.adapter);
                                     }
                                     else{
@@ -266,8 +271,9 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
         //COLLECTE LES DONNEES DE LA SALLE
         if(!(parent.getItemAtPosition(position).toString().equals("Choisir salle") || parent.getItemAtPosition(position).toString().equals("Choose room"))){
             lieuDeReunion = parent.getItemAtPosition(position).toString();
+            lieuDeReunion = lieuDeReunion.charAt(lieuDeReunion.length() - 1) + "";
             mLieuReunionHint.setText("");
-            Toast.makeText(getApplicationContext(), lieuDeReunion, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.spinner_place) + " " + lieuDeReunion, Toast.LENGTH_LONG).show();
         }
         else{
             lieuDeReunion = null;

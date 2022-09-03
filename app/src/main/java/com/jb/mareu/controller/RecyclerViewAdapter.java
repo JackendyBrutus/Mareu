@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -18,17 +20,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jb.mareu.R;
 import com.jb.mareu.model.Reunion;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> implements Filterable {
 
     List<Reunion> listeDeRencontre;
     Context context;
+    List<Reunion> listeDeRencontreFull;
 
     public RecyclerViewAdapter(List<Reunion> listeDeRencontre, Context context) {
-        this.listeDeRencontre = listeDeRencontre;
+        this.listeDeRencontreFull = listeDeRencontre;
         this.context = context;
+        this.listeDeRencontre = new ArrayList<>(listeDeRencontreFull);
     }
 
     @NonNull
@@ -43,7 +47,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         //FORMATTAGE DES DONNEES
         String lieu = listeDeRencontre.get(position).getLieuReunion();
-        lieu = (lieu.length() == 6) ? lieu.substring(5) : lieu.substring(6);
 
         String heure = listeDeRencontre.get(position).getHeureReunion().toString();
         heure.substring(0, heure.length() - 2);
@@ -59,6 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.emailReunion.setText(emailParticipants.length() > 35 ? emailParticipants.substring(0, 35) + "..." : emailParticipants);
         holder.imageViewColor.setImageResource(String.valueOf(listeDeRencontre.get(position).getCouleur()).equals("pearl") ? R.color.pearl : R.color.green);
 
+        //SUPPRESSION D'UNE REUNION
         holder.deleteReunion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +76,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             public void onClick(DialogInterface dialog, int which) {
                                 //SUPPRIMER REUNION
                                 MainActivity.reunionService.supprimerReunion(listeDeRencontre.get(holder.getAdapterPosition()));
+                                MainActivity.recyclerView.setAdapter(MainActivity.adapter);
+                                //REINITIALISE L'ADAPTER
+                                MainActivity.adapter = new RecyclerViewAdapter(MainActivity.reunionService.getListeDeRencontre(), context);
                                 MainActivity.recyclerView.setAdapter(MainActivity.adapter);
                             }
                         })
@@ -102,6 +109,39 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemCount() {
         return listeDeRencontre.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return reunionFilter;
+    }
+
+    private final Filter reunionFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Reunion> listeReunionFiltree = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0){
+                listeReunionFiltree.addAll(listeDeRencontreFull);
+            }
+            else{
+                //FILTRER REUNIONS
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                listeReunionFiltree = MainActivity.reunionService.filtrerReunion(filterPattern);
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = listeReunionFiltree;
+            results.count = listeReunionFiltree.size();
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            listeDeRencontre.clear();
+            listeDeRencontre.addAll((ArrayList)results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageViewColor;

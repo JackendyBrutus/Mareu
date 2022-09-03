@@ -5,18 +5,25 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.RootMatchers.isDialog;
+import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import androidx.test.espresso.ViewAssertion;
 import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 
 import com.jb.mareu.R;
 import com.jb.mareu.controller.MainActivity;
+import com.jb.mareu.controller.RecyclerViewAdapter;
 import com.jb.mareu.model.Reunion;
 
 import org.hamcrest.CoreMatchers;
@@ -27,14 +34,19 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.*;
 
 import android.os.SystemClock;
+import android.util.Log;
+import android.widget.SearchView;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -95,6 +107,7 @@ public class ReunionServiceInstrumentedTest {
         intentsTestRule.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                intentsTestRule.getActivity().adapter = new RecyclerViewAdapter(intentsTestRule.getActivity().reunionService.getListeDeRencontre(), intentsTestRule.getActivity());
                 intentsTestRule.getActivity().recyclerView.setAdapter(intentsTestRule.getActivity().adapter);
             }
         });
@@ -116,7 +129,7 @@ public class ReunionServiceInstrumentedTest {
                 new Reunion(
                         LocalTime.parse("10:30:00"),
                         LocalDate.parse("2022-07-30"),
-                        "Salle A",
+                        "A",
                         "Peach",
                         new ArrayList<String>(){{
                             add("jb@gmail.com");
@@ -126,7 +139,7 @@ public class ReunionServiceInstrumentedTest {
                 new Reunion(
                         LocalTime.parse("10:30:00"),
                         LocalDate.parse("2022-08-17"),
-                        "Salle B",
+                        "B",
                         "Revue de projet",
                         new ArrayList<String>(){{
                             add("jb@gmail.com");
@@ -136,7 +149,7 @@ public class ReunionServiceInstrumentedTest {
                 new Reunion(
                         LocalTime.parse("10:30:00"),
                         LocalDate.parse("2022-07-30"),
-                        "Salle C",
+                        "C",
                         "Brainstorming",
                         new ArrayList<String>(){{
                             add("jb@gmail.com");
@@ -149,14 +162,22 @@ public class ReunionServiceInstrumentedTest {
         intentsTestRule.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                intentsTestRule.getActivity().adapter = new RecyclerViewAdapter(intentsTestRule.getActivity().reunionService.getListeDeRencontre(), intentsTestRule.getActivity());
                 intentsTestRule.getActivity().recyclerView.setAdapter(intentsTestRule.getActivity().adapter);
             }
         });
 
-        //SystemClock.sleep(1500);
-
         //FILTRER LES REUNIONS PRECEDEMMENT AJOUTEES PAR DATE
+        onView(withId(R.id.filtering_menu)).perform(click());
+        String hint = intentsTestRule.getActivity().getString(R.string.menu_filtering);
+        onView(withHint(hint)).perform(ViewActions.typeText("30/07/2022"));
 
+        //VERIFIER QUE LA VUE NE CONTIENT QUE 2 REUNIONS ET QUE CES 2 REUNION CORRESPONDENT AUX 2 REUNIONS DONT LEURS DATES CORRESPONDENT A LA DATE ENTREE
+        assertTrue(intentsTestRule.getActivity().recyclerView.getAdapter().getItemCount() == 2);
+
+        onView(withId(R.id.activity_mainRecyclerView))
+                .perform(actionOnItemAtPosition(0, click()));
+        onView(withId(R.id.activity_formEditTextDate)).check(matches(withText("30/07/2022")));
     }
 
     @Test

@@ -37,6 +37,6 @@
     <string name="delete_meeting_negative_button">No</string>
     <string name="tv_edit_meeting_title">Edit meeting</string>
     <string name="menu">Filtering</string>
-    <string name="menu_date_filtering">Filter by date</string>
-    <string name="menu_place_filtering">Filter by room</string>
+    <string name="menu_filtering">Filter by date or by room</string>
+    <string name="spinner_place">Room</string>
 </resources>
