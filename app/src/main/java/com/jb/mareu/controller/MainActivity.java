@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         reunionService = new ReunionService();
 
-        // TEST AJOUT DE QUELQUES ELEMENTS AU PREALABLE
+        // TEST AJOUT DE QUELQUES REUNIONS AU PREALABLE
 
         /*
         reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "A", "Anticonstitutionnellement", Collections.singletonList("jackendy@gmail.com")));
@@ -52,11 +52,6 @@ public class MainActivity extends AppCompatActivity {
         reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "C", "Mario", Collections.singletonList("patricia@gmail.com")));
         reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "N", "Luigi", Collections.singletonList("frederic@gmail.com")));
         reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "O", "Party", Collections.singletonList("josephine@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "P", "Abreviativement", Collections.singletonList("julia@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "Q", "Constante", Collections.singletonList("adrienne@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "R", "Constitution", Collections.singletonList("rachelle@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "S", "Constitutionnellement", Collections.singletonList("picasso@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "J", "Over", Collections.singletonList("alicia@gmail.com")));
          */
 
         //

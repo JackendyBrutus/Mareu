@@ -93,10 +93,10 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
         positionReunionAModifier = intent.getIntExtra("position", -1);
 
         String couleurReunionAModifier = "green";
-        if(positionReunionAModifier >= 0){
+        if(positionReunionAModifier >= 0 && getIntent().getSerializableExtra("reunionAModifier") != null){
             //AJOUT DES DONNÉES RELATIVES A LA RÉUNION DANS LES DIFFERENTS COMPOSANTS
-            mUneReunion = MainActivity.reunionService.getListeDeRencontre().get(positionReunionAModifier);
-            couleurReunionAModifier = MainActivity.reunionService.getListeDeRencontre().get(positionReunionAModifier).getCouleur();
+            mUneReunion = (Reunion) getIntent().getSerializableExtra("reunionAModifier");
+            couleurReunionAModifier = MainActivity.reunionService.getListeDeRencontre().get(MainActivity.reunionService.getListeDeRencontre().indexOf(mUneReunion)).getCouleur();
             mPageTitle.setText(R.string.tv_edit_meeting_title);
 
             mSujetReunion.setText(mUneReunion.getSujetReunion());
@@ -183,7 +183,7 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
 
                     //PARCOURS LA CHAINE ENTREE PAR L'UTILISATEUR
                     for(int i = 0; i < text.length(); i++){
-                        //CONTITUER UNE ADRESSE MAIL ET L'AJOUTER A LA LISTE DE PARTICIPANTS
+                        //CONSTITUER UNE ADRESSE MAIL ET L'AJOUTER A LA LISTE DE PARTICIPANTS
                         if(text.charAt(i) != ' ' && text.charAt(i) != ','){
                             adresseMail.append(text.charAt(i));
                         }
@@ -232,10 +232,10 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
                                 public void onClick(DialogInterface dialog, int which) {
                                     //RENVOIE UNE VALEUR A LA MAINACTIVITY QUI INDIQUE SI LA RÉUNION A ÉTÉ AJOUTÉE
                                     Intent intent = new Intent();
-                                    if(positionReunionAModifier >= 0){
+                                    if(positionReunionAModifier >= 0 && getIntent().getSerializableExtra("reunionAModifier") != null){
                                         //MODIFIER UNE REUNION EXISTANTE
                                         mUneReunion.setCouleur(finalCouleurReunionAModifier);
-                                        MainActivity.reunionService.getListeDeRencontre().set(positionReunionAModifier, mUneReunion);
+                                        MainActivity.reunionService.getListeDeRencontre().set(MainActivity.reunionService.getListeDeRencontre().indexOf(RecyclerViewAdapter.listeReunionFiltree.get(positionReunionAModifier)), mUneReunion);
                                         //REINITIALISE L'ADAPTER
                                         MainActivity.adapter = new RecyclerViewAdapter(MainActivity.reunionService.getListeDeRencontre(), MainActivity.adapter.context);
                                         MainActivity.recyclerView.setAdapter(MainActivity.adapter);
@@ -253,6 +253,9 @@ public class FormActivity extends AppCompatActivity implements AdapterView.OnIte
                                             setResult(Activity.RESULT_OK, intent);
                                         }
                                     }
+
+                                    RecyclerViewAdapter.listeReunionFiltree.clear();
+                                    RecyclerViewAdapter.listeReunionFiltree.addAll(MainActivity.reunionService.getListeDeRencontre());
 
                                     //FERME L'ACTIVITÉ
                                     finish();

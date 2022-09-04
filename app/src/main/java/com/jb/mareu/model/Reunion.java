@@ -1,12 +1,13 @@
 package com.jb.mareu.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-public class Reunion {
+public class Reunion implements Serializable {
     private LocalTime mHeureReunion;
     private LocalDate mDateReunion;
     private String mLieuReunion;

@@ -25,6 +25,8 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> implements Filterable {
 
+    public static List<Reunion> listeReunionFiltree = new ArrayList<>();
+
     List<Reunion> listeDeRencontre;
     Context context;
     List<Reunion> listeDeRencontreFull;
@@ -33,6 +35,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.listeDeRencontreFull = listeDeRencontre;
         this.context = context;
         this.listeDeRencontre = new ArrayList<>(listeDeRencontreFull);
+        listeReunionFiltree.addAll(listeDeRencontreFull);
     }
 
     @NonNull
@@ -77,6 +80,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 //SUPPRIMER REUNION
                                 MainActivity.reunionService.supprimerReunion(listeDeRencontre.get(holder.getAdapterPosition()));
                                 MainActivity.recyclerView.setAdapter(MainActivity.adapter);
+
+                                listeReunionFiltree.clear();
+                                listeReunionFiltree.addAll(MainActivity.reunionService.getListeDeRencontre());
+
                                 //REINITIALISE L'ADAPTER
                                 MainActivity.adapter = new RecyclerViewAdapter(MainActivity.reunionService.getListeDeRencontre(), context);
                                 MainActivity.recyclerView.setAdapter(MainActivity.adapter);
@@ -99,7 +106,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 //OUVRIR LA FORM_ACTIVITY EN LUI PASSANT UNE VALEUR QUI INDIQUE Q'ON VEUT MODIFIER LA REUNION
                 Intent intent = new Intent(context, FormActivity.class);
-                intent.putExtra("position", listeDeRencontre.indexOf(listeDeRencontre.get(holder.getPosition())));
+                intent.putExtra("position", listeReunionFiltree.indexOf(listeReunionFiltree.get(holder.getPosition())));
+                if(listeReunionFiltree.size() > 0){
+                    intent.putExtra("reunionAModifier", listeReunionFiltree.get(holder.getPosition()));
+                }
+                else{
+                    intent.putExtra("reunionAModifier", listeDeRencontre.get(holder.getPosition()));
+                }
+
                 context.startActivity(intent);
             }
         });
@@ -118,7 +132,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private final Filter reunionFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<Reunion> listeReunionFiltree = new ArrayList<>();
+            listeReunionFiltree.clear();
 
             if(constraint == null || constraint.length() == 0){
                 listeReunionFiltree.addAll(listeDeRencontreFull);
