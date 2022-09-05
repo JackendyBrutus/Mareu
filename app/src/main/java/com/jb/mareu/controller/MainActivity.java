@@ -17,12 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jb.mareu.R;
-import com.jb.mareu.model.Reunion;
 import com.jb.mareu.service.ReunionService;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,19 +38,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         reunionService = new ReunionService();
-
-        // TEST AJOUT DE QUELQUES REUNIONS AU PREALABLE
-
-        /*
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "A", "Anticonstitutionnellement", Collections.singletonList("jackendy@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "B", "Game", Collections.singletonList("brutus@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "C", "Mario", Collections.singletonList("patricia@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "N", "Luigi", Collections.singletonList("frederic@gmail.com")));
-        reunionService.getListeDeRencontre().add(new Reunion(LocalTime.parse("10:00:00"), LocalDate.parse("2022-08-15"), "O", "Party", Collections.singletonList("josephine@gmail.com")));
-         */
-
-        //
-
 
         addButton = findViewById(R.id.floatingActionButton_addMeeting);
 
