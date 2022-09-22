@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
         Drawable icon = getResources().getDrawable(R.drawable.menu_icon);
         menuFiltering.setIcon(icon).setActionView(searchViewFiltering).setShowAsAction(
-                MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItem.SHOW_AS_ACTION_WITH_TEXT
+                MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItem.SHOW_AS_ACTION_ALWAYS
         );
 
         searchViewFiltering.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

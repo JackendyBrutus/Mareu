@@ -1,0 +1,57 @@
+<resources>
+    <!-- design_main_recyclerview dimension -->
+    <dimen name="design_main_recyclerview_imageview_color_width">35dp</dimen>
+    <dimen name="design_main_recyclerview_imageview_color_height">35dp</dimen>
+    <dimen name="design_main_recyclerview_imageview_color_margin">12dp</dimen>
+    <dimen name="design_main_recyclerview_imageview_color_width_landscape">45dp</dimen>
+    <dimen name="design_main_recyclerview_imageview_color_height_landscape">45dp</dimen>
+    <dimen name="design_main_recyclerview_imageview_color_margin_landscape">16dp</dimen>
+    <dimen name="design_main_recyclerview_textview_info_reunion_width">200sp</dimen>
+    <dimen name="design_main_recyclerview_textview_info_reunion_height">25sp</dimen>
+    <dimen name="design_main_recyclerview_textview_info_reunion_layout_marginTop">12dp</dimen>
+    <dimen name="design_main_recyclerview_textview_info_reunion_textSize">14sp</dimen>
+    <dimen name="design_main_recyclerview_textview_info_reunion_width_landscape">350sp</dimen>
+    <dimen name="design_main_recyclerview_textview_info_reunion_textSize_landscape">18sp</dimen>
+    <dimen name="design_main_recyclerview_textview_email_reunion_width">200sp</dimen>
+    <dimen name="design_main_recyclerview_textview_email_reunion_width_landscape">350sp</dimen>
+    <dimen name="design_main_recyclerview_textview_email_reunion_height">20sp</dimen>
+    <dimen name="design_main_recyclerview_textview_email_reunion_textsize">10sp</dimen>
+    <dimen name="design_main_recyclerview_textview_email_reunion_textsize_landscape">14sp</dimen>
+    <dimen name="design_main_recyclerview_textview_email_reunion_layout_marginTop">32dp</dimen>
+    <dimen name="design_main_recyclerview_imagebutton_delete_reunion_layout_marginLeft_landscape">36dp</dimen>
+    <dimen name="design_main_recyclerview_imagebutton_delete_reunion_layout_marginLeft">16dp</dimen>
+    <dimen name="design_main_recyclerview_imagebutton_delete_reunion_layout_marginTop">16dp</dimen>
+
+    <!-- activity_form dimension -->
+    <dimen name="activity_form_textview_page_title_textsize">20sp</dimen>
+    <dimen name="activity_form_textview_page_title_layout_margin">16dp</dimen>
+    <dimen name="activity_form_edittext_meeting_subject_hint_textsize">18sp</dimen>
+    <dimen name="activity_form_edittext_meeting_subject_layout_marginLeft">16dp</dimen>
+    <dimen name="activity_form_edittext_meeting_subject_layout_marginRight">16dp</dimen>
+    <dimen name="activity_form_edittext_meeting_subject_hint_layout_marginStart">16dp</dimen>
+    <dimen name="activity_form_edittext_meeting_subject_hint_layout_marginBottom">-16dp</dimen>
+    <dimen name="activity_form_linear_layout_date_margin">16dp</dimen>
+    <dimen name="activity_form_textview_date_textsize">20sp</dimen>
+    <dimen name="activity_form_textview_date_layout_marginEnd">4dp</dimen>
+    <dimen name="activity_form_edittext_date_hint_textsize">18sp</dimen>
+    <dimen name="activity_form_textview_date_hint_layout_marginStart">8dp</dimen>
+    <dimen name="activity_form_linear_layout_heure_layout_marginStart">16dp</dimen>
+    <dimen name="activity_form_linear_layout_heure_layout_marginBottom">16dp</dimen>
+    <dimen name="activity_form_textview_heure_textsize">20sp</dimen>
+    <dimen name="activity_form_textview_heure_layout_marginEnd">4dp</dimen>
+    <dimen name="activity_form_edittext_heure_hint_textsize">18sp</dimen>
+    <dimen name="activity_form_textview_heure_hint_layout_marginStart">8dp</dimen>
+    <dimen name="activity_form_linear_layout_lieu_layout_marginStart">16dp</dimen>
+    <dimen name="activity_form_linear_layout_lieu_layout_marginBottom">16dp</dimen>
+    <dimen name="activity_form_textview_lieu_textsize">20sp</dimen>
+    <dimen name="activity_form_textview_lieu_layout_marginEnd">4dp</dimen>
+    <dimen name="activity_form_textview_lieu_hint_layout_marginStart">4dp</dimen>
+    <dimen name="activity_form_textview_participants_textsize">20sp</dimen>
+    <dimen name="activity_form_textview_participants_layout_marginStart">16dp</dimen>
+    <dimen name="activity_form_edittext_participant_list_hint_textsize">18sp</dimen>
+    <dimen name="activity_form_edittext_participant_list_layout_marginLeft">16dp</dimen>
+    <dimen name="activity_form_edittext_participant_list_layout_marginRight">16dp</dimen>
+    <dimen name="activity_form_textview_participant_list_hint_layout_marginStart">16dp</dimen>
+    <dimen name="activity_form_button_valider_layout_margin">16dp</dimen>
+    <dimen name="activity_form_button_valider_textsize">14sp</dimen>
+</resources>

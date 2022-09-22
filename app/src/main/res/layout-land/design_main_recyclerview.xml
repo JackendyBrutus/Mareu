@@ -8,37 +8,40 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/design_main_recyclerview_imageview_color"
-        android:layout_width="@dimen/design_main_recyclerview_imageview_color_width"
-        android:layout_height="@dimen/design_main_recyclerview_imageview_color_height"
-        android:layout_margin="@dimen/design_main_recyclerview_imageview_color_margin"
+        android:layout_width="@dimen/design_main_recyclerview_imageview_color_width_landscape"
+        android:layout_height="@dimen/design_main_recyclerview_imageview_color_height_landscape"
+        android:layout_marginStart="@dimen/design_main_recyclerview_imageview_color_margin_landscape"
+        android:layout_marginTop="@dimen/design_main_recyclerview_imageview_color_margin"
+        android:layout_marginEnd="@dimen/design_main_recyclerview_imageview_color_margin_landscape"
+        android:layout_marginBottom="@dimen/design_main_recyclerview_imageview_color_margin"
         android:scaleType="centerCrop"
         android:src="@color/green" />
 
     <TextView
         android:id="@+id/design_main_recyclerview_info_reunion"
-        android:layout_width="@dimen/design_main_recyclerview_textview_info_reunion_width"
+        android:layout_width="@dimen/design_main_recyclerview_textview_info_reunion_width_landscape"
         android:layout_height="@dimen/design_main_recyclerview_textview_info_reunion_height"
         android:layout_marginTop="@dimen/design_main_recyclerview_textview_info_reunion_layout_marginTop"
         android:layout_toRightOf="@+id/design_main_recyclerview_imageview_color"
         android:text="Réunion A - 14h00 - Peach"
         android:textColor="@color/black"
-        android:textSize="@dimen/design_main_recyclerview_textview_info_reunion_textSize"
+        android:textSize="@dimen/design_main_recyclerview_textview_info_reunion_textSize_landscape"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/design_main_recyclerview_email_reunion"
-        android:layout_width="@dimen/design_main_recyclerview_textview_email_reunion_width"
+        android:layout_width="@dimen/design_main_recyclerview_textview_email_reunion_width_landscape"
         android:layout_height="@dimen/design_main_recyclerview_textview_email_reunion_height"
         android:layout_marginTop="@dimen/design_main_recyclerview_textview_email_reunion_layout_marginTop"
         android:layout_toRightOf="@+id/design_main_recyclerview_imageview_color"
         android:text="maxime@lamzone.com, alex@lamzo..."
-        android:textSize="@dimen/design_main_recyclerview_textview_email_reunion_textsize" />
+        android:textSize="@dimen/design_main_recyclerview_textview_email_reunion_textsize_landscape" />
 
     <ImageButton
         android:id="@+id/design_main_recyclerview_delete_reunion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/design_main_recyclerview_imagebutton_delete_reunion_layout_marginLeft"
+        android:layout_marginLeft="@dimen/design_main_recyclerview_imagebutton_delete_reunion_layout_marginLeft_landscape"
         android:layout_marginTop="@dimen/design_main_recyclerview_imagebutton_delete_reunion_layout_marginTop"
         android:layout_toRightOf="@+id/design_main_recyclerview_info_reunion"
         android:background="@color/white"
